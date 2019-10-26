@@ -28,7 +28,9 @@ class stochastic_cover extends uvm_component;
     protected uvm_phase running_phase;
     task run_phase(uvm_phase phase);
         running_phase = phase;
-        running_phase.raise_objection(this);        running_phase.raise_objection(this);    endtask: run_phase
+        running_phase.raise_objection(this);        
+        running_phase.raise_objection(this);    
+    endtask: run_phase
 
 //============= Função para copiar transações do agent (Requisições) ======================
     function void write_req(stochastic_transaction t);
