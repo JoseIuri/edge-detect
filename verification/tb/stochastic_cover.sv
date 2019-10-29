@@ -49,13 +49,13 @@ class stochastic_cover extends uvm_component;
     endfunction: write_req
 //============= Função para copiar transações do agent (Respostas) ========================
     function void write_resp(stochastic_transaction t);
-    resp.copy(t);
+        resp.copy(t);
 
-    //resp_cover.sample();
+        //resp_cover.sample();
 
-    //$display("cobertura:%d",$get_coverage());
-    if($get_coverage() >= min_cover)
-        running_phase.drop_objection(this);
+        // //$display("cobertura:%d",$get_coverage());
+        // if($get_coverage() >= min_cover)
+        //     running_phase.drop_objection(this);
 
     endfunction: write_resp
 endclass : stochastic_cover
