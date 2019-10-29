@@ -62,7 +62,7 @@ class stochastic_driver extends uvm_driver#(stochastic_transaction);
         @(posedge dut_vif.rst);
 
         forever begin
-            seq_item_port.get_next_item(req);
+            seq_item_port.try_next_item(req);
             -> begin_record;
             drive_transfer(req);
             seq_item_port.item_done();
