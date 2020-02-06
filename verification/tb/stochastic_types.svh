@@ -1,4 +1,0 @@
-`ifndef STOCHASTIC_TYPES
-`define STOCHASTIC_TYPES
-
-`endif
