@@ -4,10 +4,12 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+import sys 
+sys.path.append("..")
 
 # Import personal implementation library
-from stochWrapper import *
-import detSobel as detS
+from stoch.stochWrapper import *
+import det.detSobel as detS
 
 ray.init()
 
@@ -54,9 +56,9 @@ rng_z_1_verilog = [bitarray('00010011'),
 for i in range(8):
 	rng_z_1_rand[i] = bitarray(auxStr.format(random.getrandbits(lfsrSize)))
 
-img = np.array([[	54,53,		44],
-				[	127,130,	149],
-				[	130,131,	139]],np.float64)
+img = np.array([[	0x10,0x10,	0x12],
+				[	0x12,0x13,	0x14],
+				[	0x00,0x00,	0x13]],np.float64)
 #img = np.float64(loadHex('./hw-sim/stochastic-manual/square3.txt'))
 for i in range (1):
 	#img = np.float64(np.random.randint(255,size=(3,3)))
@@ -67,7 +69,7 @@ for i in range (1):
 	resultSverilog = sobelFilter(img,r_had,rng_z_1_verilog)
 
 	#img = np.rot90(img)
-	print('Resultado det:        ', int(resultD))
+	print('Resultado det:        ', hex(resultD))
 	#print('Resultado rand alt:   ', hex(resultSrandalt))
 	print('Resultado Verilog:   ',  hex(resultSverilog))
 	#print('Resultado Erro:   ',  hex(resultError))
