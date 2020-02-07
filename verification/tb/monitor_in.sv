@@ -1,8 +1,8 @@
 class monitor_in extends uvm_monitor;
     `uvm_component_utils(monitor_in)
 
-    input_vif  vif;
-    output_vif out_vif;
+    input_vif  input_if;
+    output_vif output_if;
     event begin_record, end_record;
     tr_in tr;
     uvm_analysis_port #(tr_in) item_collected_port;
@@ -14,8 +14,8 @@ class monitor_in extends uvm_monitor;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        assert(uvm_config_db#(input_vif)::get(this, "", "vif", vif));
-        assert(uvm_config_db#(output_vif)::get(this, "", "vif", out_vif));
+        assert(uvm_config_db#(input_vif)::get(this, "", "input_if", input_if));
+        assert(uvm_config_db#(output_vif)::get(this, "", "output_if", output_if));
         tr = tr_in::type_id::create("tr", this);
     endfunction
 
@@ -24,27 +24,28 @@ class monitor_in extends uvm_monitor;
         fork
             collect_transactions(phase);
             record_tr();
-        join
+        join_none
     endtask
 
     virtual task collect_transactions(uvm_phase phase);
-        wait(vif.reset === 1);
-        @(negedge vif.reset);
+        wait(input_if.reset === 1);
+        @(negedge input_if.reset);
         
         forever begin
-            @(posedge vif.clk);
-            if (vif.start) begin
-                @(posedge vif.clk);
-                tr.pixel_1_bin <= vif.pixel_1_bin;
-                tr.pixel_2_bin <= vif.pixel_2_bin;
-                tr.pixel_3_bin <= vif.pixel_3_bin;
-                tr.pixel_4_bin <= vif.pixel_4_bin;
-                tr.pixel_6_bin <= vif.pixel_6_bin;
-                tr.pixel_7_bin <= vif.pixel_7_bin;
-                tr.pixel_8_bin <= vif.pixel_8_bin;
-                tr.pixel_9_bin <= vif.pixel_9_bin;
-                item_collected_port.write(tr);
-            end
+            @(posedge input_if.clk);
+            
+            @(negedge input_if.start);
+            -> begin_record;
+            tr.pixel_1_bin <= input_if.pixel_1_bin;
+            tr.pixel_2_bin <= input_if.pixel_2_bin;
+            tr.pixel_3_bin <= input_if.pixel_3_bin;
+            tr.pixel_4_bin <= input_if.pixel_4_bin;
+            tr.pixel_6_bin <= input_if.pixel_6_bin;
+            tr.pixel_7_bin <= input_if.pixel_7_bin;
+            tr.pixel_8_bin <= input_if.pixel_8_bin;
+            tr.pixel_9_bin <= input_if.pixel_9_bin;
+            item_collected_port.write(tr);
+            @(negedge input_if.clk);
             -> end_record;
         end
     endtask

@@ -1,4 +1,19 @@
-import "DPI-C" context function int adder(int a, int b);
+typedef struct {
+    int p1;
+    int p2;
+    int p3;
+    int p4;
+    int p6;
+    int p7;
+    int p8;
+    int p9;
+} DpiStructGEN;
+
+import "DPI-C" context gen_init_python = function gen_init_sv();
+import "DPI-C" context gen_set_param = function gen_sv_set_param (inout DpiStructGEN dpiStruct);
+import "DPI-C" context sobel = function int gen_sv_sobel(inout DpiStructGEN dpiStruct);
+
+DpiStructGEN dpiStruct;
 
 class refmod extends uvm_component;
     `uvm_component_utils(refmod)
@@ -14,6 +29,8 @@ class refmod extends uvm_component;
         super.new(name, parent);
         in = new("in", this);
         out = new("out", this);
+
+        void'(gen_init_sv());
     endfunction
     
     virtual function void build_phase(uvm_phase phase);
@@ -26,8 +43,17 @@ class refmod extends uvm_component;
         
         forever begin
             @begin_refmodtask;
-            tr_o.data = adder(tr.A, tr.B);
-            $display("%d",tr_o.data);
+
+            dpiStruct.p1 = tr.pixel_1_bin;
+            dpiStruct.p2 = tr.pixel_2_bin;
+            dpiStruct.p3 = tr.pixel_3_bin;
+            dpiStruct.p4 = tr.pixel_4_bin;
+            dpiStruct.p6 = tr.pixel_6_bin;
+            dpiStruct.p7 = tr.pixel_7_bin;
+            dpiStruct.p8 = tr.pixel_8_bin;
+            dpiStruct.p9 = tr.pixel_9_bin;
+
+            tr_o.z_bin = gen_sv_sobel(dpiStruct);
             out.write(tr_o);
         end
     endtask: run_phase

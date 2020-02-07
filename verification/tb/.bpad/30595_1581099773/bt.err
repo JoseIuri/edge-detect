@@ -1,0 +1,15 @@
+/mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/inca/bin/64bit/xmsim
+Obtained 13 stack frames.
+/mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libcbreakpad.so(_Z13use_backtracev+0x9d) [0x7fdfe4d33ae9]
+/mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libcbreakpad.so(cbpad_generate_dump_on_demand+0x66) [0x7fdfe4d33e3c]
+xmsim() [0x152c73c]
+xmsim(serror+0x95) [0x152cb35]
+xmsim() [0x997f39]
+/lib64/libpthread.so.0(+0xf5f0) [0x7fdfe5de85f0]
+/lib64/libc.so.6(gsignal+0x37) [0x7fdfe4fa3337]
+/lib64/libc.so.6(abort+0x148) [0x7fdfe4fa4a28]
+/mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libpython3.6m.so.1.0(Py_FatalError+0x2f) [0x7fdfd5e3acaf]
+/mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libpython3.6m.so.1.0(+0x198102) [0x7fdfd5e3b102]
+/mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/inca/bin/64bit/../../../lib/64bit/libpython3.6m.so.1.0(_Py_InitializeEx_Private+0x4f9) [0x7fdfd5e3bcb9]
+./test.so(gen_init_python+0xb) [0x7fdfd61d9ddb]
+[0x4ba1219]

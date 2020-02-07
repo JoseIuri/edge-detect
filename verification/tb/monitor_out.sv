@@ -1,6 +1,6 @@
 class monitor_out extends uvm_monitor;
     `uvm_component_utils(monitor_out)
-    output_vif  vif;
+    output_vif  output_if;
     event begin_record, end_record;
     tr_out tr;
     uvm_analysis_port #(tr_out) item_collected_port;
@@ -12,7 +12,7 @@ class monitor_out extends uvm_monitor;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        assert(uvm_config_db#(output_vif)::get(this, "", "vif", vif));
+        assert(uvm_config_db#(output_vif)::get(this, "", "output_if", output_if));
         tr = tr_out::type_id::create("tr", this);
     endfunction
 
@@ -25,19 +25,19 @@ class monitor_out extends uvm_monitor;
     endtask
 
     virtual task collect_transactions(uvm_phase phase);
-        wait(vif.rst === 1);
-        @(negedge vif.rst);
+        wait(output_if.reset == 1);
+        @(negedge output_if.reset);
         
         forever begin
-            @(posedge vif.clk);
-            if(vif.done) begin
+            @(posedge output_if.clk);
+            if(output_if.done) begin
                 -> begin_record;
                 
-                tr.z_bin = vif.z_bin;
+                tr.z_bin = output_if.z_bin;
                 item_collected_port.write(tr);
 
             end
-            @(negedge vif.clk);
+            @(negedge output_if.clk);
             -> end_record;
         end
     endtask

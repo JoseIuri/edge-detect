@@ -1,0 +1,304 @@
+xrun(64): 19.09-s003: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	19.09-s003: Started on Feb 07, 2020 at 16:12:15 -03
+xrun
+	-64bit
+	-uvm
+	+incdir+../rtl/
+	input_if.sv
+	output_if.sv
+	../../hw-sim/stochastic-manual/mux2.v
+	../../hw-sim/stochastic-manual/mux4.v
+	../../hw-sim/stochastic-manual/stochFunction.v
+	../../hw-sim/stochastic-manual/stochLFSR8bit.v
+	../../hw-sim/stochastic-manual/stochLFSR16bit.v
+	../../hw-sim/stochastic-manual/stochWrapper.v
+	./my_pkg.sv
+	top.sv
+	-sv_lib test.so
+	+UVM_TESTNAME=simple_test
+	-covtest simple_test-100
+	-svseed 100
+	-defparam top.min_cover=100
+	-defparam top.min_transa=5000
+	-access +r
+	-input shm.tcl
+	+uvm_set_config_int=*,recording_detail,1
+	-coverage all
+	-covoverwrite
+
+   User defined plus("+") options:
+	+uvm_set_config_int=*,recording_detail,1
+
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /usr/local/cds/XCELIUM1909/tools/methodology/UVM/CDNS-1.1d
+xmvlog: *W,NOTIND: unable to access -INCDIR ../rtl/ (No such file or directory).
+file: input_if.sv
+	interface worklib.input_if:sv
+		errors: 0, warnings: 0
+file: output_if.sv
+	interface worklib.output_if:sv
+		errors: 0, warnings: 0
+file: ../../hw-sim/stochastic-manual/mux2.v
+	module worklib.mux2:v
+		errors: 0, warnings: 0
+file: ../../hw-sim/stochastic-manual/mux4.v
+	module worklib.mux4:v
+		errors: 0, warnings: 0
+file: ../../hw-sim/stochastic-manual/stochFunction.v
+	module worklib.stochFunction:v
+		errors: 0, warnings: 0
+file: ../../hw-sim/stochastic-manual/stochLFSR8bit.v
+	module worklib.stochLFSR8bit:v
+		errors: 0, warnings: 0
+file: ../../hw-sim/stochastic-manual/stochLFSR16bit.v
+	module worklib.stochLFSR16bit:v
+		errors: 0, warnings: 0
+file: ../../hw-sim/stochastic-manual/stochWrapper.v
+	module worklib.stochWrapper:v
+		errors: 0, warnings: 0
+file: ./my_pkg.sv
+            begin_tr(req, "driver_in");
+                   |
+xmvlog: *W,FUNTSK (./driver_in.sv,87|19): function called as a task without void'().
+            begin_tr(tr, "monitor");
+                   |
+xmvlog: *W,FUNTSK (./monitor_in.sv,56|19): function called as a task without void'().
+            begin_tr(tr, "monitor_out");
+                   |
+xmvlog: *W,FUNTSK (./monitor_out.sv,48|19): function called as a task without void'().
+    uvm_config_db#(int)::get(this, "", "min_cover", min_cover);
+                           |
+xmvlog: *W,FUNTSK (./coverage.sv,30|27): function called as a task without void'().
+    uvm_config_db#(int)::get(this, "", "min_transa", min_transa);
+                           |
+xmvlog: *W,FUNTSK (./coverage.sv,31|27): function called as a task without void'().
+	package worklib.my_pkg:sv
+		errors: 0, warnings: 5
+file: top.sv
+	module worklib.top:sv
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		my_pkg
+		stochLFSR16bit
+		top
+xmelab: *W,DEFHRF: Failed to resolve hierarchical reference top.min_cover - DEFPARAM top.min_cover=100.
+xmelab: *W,DEFHRF: Failed to resolve hierarchical reference top.min_transa - DEFPARAM top.min_transa=5000.
+    m_imp.write (t);
+              |
+xmelab: *W,FUNTSK (/usr/local/cds/XCELIUM1909/tools/methodology/UVM/CDNS-1.1d/sv/src/tlm1/uvm_analysis_port.svh,153|14): function called as a task without void'().
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+
+	Extracting FSMs for coverage:
+		worklib.stochLFSR16bit
+		worklib.stochLFSR8bit
+		worklib.mux4
+		worklib.mux2
+		worklib.stochFunction
+		worklib.stochWrapper
+			FSM extracted for state register cs
+		worklib.top
+	Total FSMs extracted = 1
+	Building instance overlay tables: ......
+xmelab: *W,COVFHT: FSM hold transitions (transitions to the current state) are not extracted for any FSM in default mode.
+.............. Done
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *W,COVDCL: By default expression coverage is scored only for Verilog logical operators (|| and &&) and VHDL logical operators (OR, AND, NOR, and NAND), and is scored only in condition expressions. To score coverage for other operators and for expressions in other statements, use the "set_expr_coverable_operators" and "set_expr_coverable_statements" coverage configuration file commands with suitable options at elaboration.
+	Generating native compiled code:
+		worklib.mux2:v <0x42635ca9>
+			streams:   2, words:   701
+		worklib.mux4:v <0x7451b34b>
+			streams:   2, words:   976
+		worklib.stochFunction:v <0x5eb731cd>
+			streams:   0, words:     0
+		worklib.stochLFSR8bit:v <0x069a30df>
+			streams:   3, words:  1709
+		worklib.stochWrapper:v <0x714a07cd>
+			streams:  43, words: 14112
+		worklib.stochLFSR16bit:v <0x1f8059b9>
+			streams:   3, words:  1733
+		worklib.uvm_pkg:sv <0x4f14a497>
+			streams:   8, words:  7542
+		worklib.uvm_pkg:sv <0x65c7bc29>
+			streams:   8, words:  7202
+		worklib.uvm_pkg:sv <0x69069316>
+			streams:   7, words:  6612
+		worklib.uvm_pkg:sv <0x27ed10b1>
+			streams:   7, words:  1918
+		worklib.uvm_pkg:sv <0x33b7b1df>
+			streams:   8, words:  2765
+		worklib.uvm_pkg:sv <0x307c2578>
+			streams:  22, words: 50596
+		worklib.uvm_pkg:sv <0x39415ba7>
+			streams:   7, words:  1918
+		worklib.uvm_pkg:sv <0x1e05d6b2>
+			streams:  28, words: 26382
+		worklib.uvm_pkg:sv <0x20313a29>
+			streams:  27, words: 25177
+		worklib.uvm_pkg:sv <0x7c1ed764>
+			streams:  23, words: 24620
+		worklib.uvm_pkg:sv <0x0ef3f54d>
+			streams:  14, words:  5920
+		worklib.uvm_pkg:sv <0x08428c21>
+			streams:  26, words: 35156
+		worklib.uvm_pkg:sv <0x50195fd0>
+			streams:   7, words:  2422
+		worklib.uvm_pkg:sv <0x7678bfb6>
+			streams:  14, words: 15839
+		worklib.uvm_pkg:sv <0x5150c1c5>
+			streams:  26, words: 29837
+		worklib.uvm_pkg:sv <0x278bb0c3>
+			streams:  25, words: 54467
+		worklib.uvm_pkg:sv <0x7cae22c2>
+			streams:  27, words: 32823
+		worklib.uvm_pkg:sv <0x7fe17502>
+			streams:  26, words: 46766
+		worklib.uvm_pkg:sv <0x36f53a68>
+			streams:  27, words: 35371
+		worklib.uvm_pkg:sv <0x306ede55>
+			streams:  25, words: 51262
+		worklib.uvm_pkg:sv <0x392d803e>
+			streams:  27, words: 37474
+		worklib.uvm_pkg:sv <0x68cd2c8d>
+			streams:  25, words: 56962
+		worklib.uvm_pkg:sv <0x7a7f1627>
+			streams:  27, words: 42288
+		worklib.uvm_pkg:sv <0x432ace2a>
+			streams:  25, words: 50105
+		worklib.uvm_pkg:sv <0x7cb172d9>
+			streams:  25, words: 53621
+		worklib.uvm_pkg:sv <0x187faf7a>
+			streams:  27, words: 34915
+		worklib.uvm_pkg:sv <0x7e455c0f>
+			streams:  25, words: 50164
+		worklib.uvm_pkg:sv <0x59c96914>
+			streams:  28, words: 79461
+		worklib.uvm_pkg:sv <0x24016b36>
+			streams:  59, words: 78598
+		worklib.cdns_uvm_pkg:sv <0x6de5a727>
+			streams:  27, words: 34653
+		worklib.cdns_uvm_pkg:sv <0x5c0199f8>
+			streams:   8, words:  4022
+		worklib.cdns_uvm_pkg:sv <0x282f80bc>
+			streams:  10, words:  8686
+		worklib.uvm_pkg:sv <0x6ddb3ea8>
+			streams:  24, words: 20505
+		worklib.uvm_pkg:sv <0x294502e7>
+			streams:   7, words:  3090
+		worklib.uvm_pkg:sv <0x20639054>
+			streams:  24, words: 22069
+		worklib.uvm_pkg:sv <0x3951047e>
+			streams:  69, words: 69845
+		worklib.uvm_pkg:sv <0x6452c829>
+			streams:  36, words: 50451
+		worklib.uvm_pkg:sv <0x424cc4fc>
+			streams: 128, words: 177881
+		worklib.uvm_pkg:sv <0x090ffe83>
+			streams:  24, words: 20900
+		worklib.uvm_pkg:sv <0x19b68b48>
+			streams:   9, words:  4523
+		worklib.uvm_pkg:sv <0x6093b43f>
+			streams:  28, words: 40052
+		worklib.uvm_pkg:sv <0x20a84e9f>
+			streams:   7, words:  3090
+		worklib.uvm_pkg:sv <0x54b853e1>
+			streams: 263, words: 255264
+		worklib.uvm_pkg:sv <0x22475e23>
+			streams:   7, words:  3090
+		worklib.uvm_pkg:sv <0x63f9b9a7>
+			streams:  39, words: 39358
+		worklib.my_pkg:sv <0x20d55b81>
+			streams:  40, words: 36889
+		worklib.uvm_pkg:sv <0x715107f5>
+			streams: 175, words: 223588
+		worklib.uvm_pkg:sv <0x23161ff5>
+			streams:  24, words: 24614
+		worklib.uvm_pkg:sv <0x6e6913b9>
+			streams: 208, words: 221085
+		worklib.uvm_pkg:sv <0x6c5a3d29>
+			streams:  24, words: 47092
+		worklib.top:sv <0x2bc23c5f>
+			streams: 148, words: 198477
+		worklib.my_pkg:sv <0x1b6c42d6>
+			streams:   0, words:     0
+		worklib.cdns_uvm_pkg:sv <0x40a94ce7>
+			streams: 134, words: 246574
+		worklib.cdns_uvmapi:svp <0x71152a68>
+			streams:  27, words: 31625
+		worklib.cdns_assert2uvm_pkg:sv <0x5eec6a77>
+			streams:   3, words:  2233
+		worklib.uvm_pkg:sv <0x55c317fd>
+			streams: 4440, words: 7215423
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                      22       7
+		Interfaces:                    2       2
+		Verilog packages:              5       5
+		Registers:                 15064   10316
+		Scalar wires:                 82       -
+		Vectored wires:               39       -
+		Named events:                  4      19
+		Always blocks:                23       8
+		Initial blocks:              312     160
+		Parallel blocks:              30      31
+		Cont. assignments:            37      34
+		Pseudo assignments:           26      26
+		Assertions:                    9       9
+		SV Class declarations:       211     319
+		SV Class specializations:    425     425
+	Writing initial simulation snapshot: worklib.stochLFSR16bit:v
+Loading snapshot worklib.stochLFSR16bit:v .................... Done
+xmsim: *W,XCLGNOPTM: The SystemVerilog constraint solver Xceligen options 'seed_only_rand and process_alternate_rng and ignore_worklib_name' are not specified and will default to 0. The recommended value for each of them is 1 which will become the default in a future release.
+SVSEED set from command line: 100
+xmsim: *W,RNDXCELON: Xceligen, the new SystemVerilog constraint solver is used. Disabling Xceligen and using the legacy constraint solver is possible with "xrun/xmsim -xceligen on=0 ...".
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /usr/local/cds/XCELIUM1909/tools/xcelium/files/xmsimrc
+xcelium> source /usr/local/cds/XCELIUM1909/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> database -open waves -shm
+Created SHM database waves
+xcelium> probe -create top -depth all -all -memories -shm -database waves
+Created probe 1
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (19.09-s003)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test simple_test...
+UVM_INFO @ 0: reporter [UVM_CMDLINE_PROC] Applying config setting from the command line: +uvm_set_config_int=*,recording_detail,1
+xmsim: *F,INTERR: INTERNAL EXCEPTION
+Observed simulation time : 0 FS + 6
+-----------------------------------------------------------------
+The tool has encountered an unexpected condition and must exit.
+Contact Cadence Design Systems customer support about this
+problem and provide enough information to help us reproduce it,
+including the logfile that contains this error message.
+  TOOL:	xmsim(64)	19.09-s003
+  HOSTNAME: Piplup
+  OPERATING SYSTEM: Linux 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64
+  MESSAGE: dlib_allocName() - dlib has not been properly initialized
+-----------------------------------------------------------------
+csi-xmsim - CSI: Cadence Support Investigation, sending details to /mnt/hdd1tera/iuri/edge-detect/verification/tb/xmsim_31815.err

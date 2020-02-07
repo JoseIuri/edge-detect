@@ -1,0 +1,9 @@
+*** Current stack trace:
+--> 0x7fdfe4fa3337 gsignal              + 37       /lib64/libc.so.6
+--> 0x7fdfe4fa3337 gsignal              + 37       /lib64/libc.so.6
+--> 0x7fdfe4fa4a28 abort                + 148      /lib64/libc.so.6
+--> 0x7fdfd5e3acaf Py_FatalError        + 2f       /mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/lib/64bit/libpython3.6m.so.1.0
+--> 0x7fdfd5e3b102 <don't know>         + 198102   /mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/lib/64bit/libpython3.6m.so.1.0
+--> 0x7fdfd5e3bcb9 _Py_InitializeEx_Private + 4f9      /mnt/hdd1tera/cds/XCELIUM1909/tools.lnx86/lib/64bit/libpython3.6m.so.1.0
+--> 0x7fdfd61d9ddb gen_init_python      + b        ./test.so
+--> 0x4ba1219 gen_init_python      + ffff80202e9c7449 ./test.so
