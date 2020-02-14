@@ -14,10 +14,6 @@ class tr_in extends uvm_sequence_item;
         `uvm_field_int(pixel_2_bin, UVM_ALL_ON|UVM_HEX)
         `uvm_field_int(pixel_3_bin, UVM_ALL_ON|UVM_HEX)
         `uvm_field_int(pixel_4_bin, UVM_ALL_ON|UVM_HEX)
-<<<<<<< HEAD
-=======
-        `uvm_field_int(pixel_5_bin, UVM_ALL_ON|UVM_HEX)
->>>>>>> bdcae14d55d1a0a6f313d7387306f7a104a01fe2
         `uvm_field_int(pixel_6_bin, UVM_ALL_ON|UVM_HEX)
         `uvm_field_int(pixel_7_bin, UVM_ALL_ON|UVM_HEX)
         `uvm_field_int(pixel_8_bin, UVM_ALL_ON|UVM_HEX)
