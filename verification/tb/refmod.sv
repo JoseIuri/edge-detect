@@ -52,8 +52,12 @@ class refmod extends uvm_component;
             dpiStruct.p7 = tr.pixel_7_bin;
             dpiStruct.p8 = tr.pixel_8_bin;
             dpiStruct.p9 = tr.pixel_9_bin;
-
-            tr_o.z_bin = gen_sv_sobel(dpiStruct);
+	    
+	    begin_tr(tr_o, "RFM");
+            gen_sv_set_param(dpiStruct);
+	    tr_o.z_bin = gen_sv_sobel(dpiStruct);
+	    #10
+	    end_tr(tr_o);
             out.write(tr_o);
         end
     endtask: run_phase

@@ -1,4 +1,4 @@
-#import numpy as np
+import numpy as np
 import sys
         
 sys.path.append("../../sw-sim")
@@ -30,4 +30,4 @@ class refmod:
         self.p8        = p8
         self.p9        = p9
         
-        return 0#verifSobelFilter([self.p1,self.p2,self.p3,self.p4,self.p6,self.p7,self.p8,self.p9])
+        return verifSobelFilter([self.p1,self.p2,self.p3,self.p4,self.p6,self.p7,self.p8,self.p9])

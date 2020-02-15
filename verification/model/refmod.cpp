@@ -69,16 +69,16 @@ extern "C" void gen_set_param(DpiStructGEN *dpiStruct){
     PyObject *p6;
     PyObject *p7;
     PyObject *p8;
-    PyObject *p9;
+    PyObject *p9; 
 
-    p1 = Py_BuildValue("f", dpiStruct->p1);
-    p2 = Py_BuildValue("f", dpiStruct->p2);
-    p3 = Py_BuildValue("f", dpiStruct->p3);
-    p4 = Py_BuildValue("f", dpiStruct->p4);
-    p6 = Py_BuildValue("f", dpiStruct->p6);
-    p7 = Py_BuildValue("f", dpiStruct->p7);
-    p8 = Py_BuildValue("f", dpiStruct->p8);
-    p9 = Py_BuildValue("f", dpiStruct->p9);
+    p1 = Py_BuildValue("i", dpiStruct->p1);
+    p2 = Py_BuildValue("i", dpiStruct->p2);
+    p3 = Py_BuildValue("i", dpiStruct->p3);
+    p4 = Py_BuildValue("i", dpiStruct->p4);
+    p6 = Py_BuildValue("i", dpiStruct->p6);
+    p7 = Py_BuildValue("i", dpiStruct->p7);
+    p8 = Py_BuildValue("i", dpiStruct->p8);
+    p9 = Py_BuildValue("i", dpiStruct->p9);
 
     pBlockMethod = Py_BuildValue("s", "set"); 
     assert(pBlockMethod != NULL); 
@@ -114,14 +114,14 @@ extern "C"  int sobel(DpiStructGEN *dpiStruct){
     
     int retval;
 
-    p1 = Py_BuildValue("f", dpiStruct->p1);
-    p2 = Py_BuildValue("f", dpiStruct->p2);
-    p3 = Py_BuildValue("f", dpiStruct->p3);
-    p4 = Py_BuildValue("f", dpiStruct->p4);
-    p6 = Py_BuildValue("f", dpiStruct->p6);
-    p7 = Py_BuildValue("f", dpiStruct->p7);
-    p8 = Py_BuildValue("f", dpiStruct->p8);
-    p9 = Py_BuildValue("f", dpiStruct->p9);
+    p1 = Py_BuildValue("i", dpiStruct->p1);
+    p2 = Py_BuildValue("i", dpiStruct->p2);
+    p3 = Py_BuildValue("i", dpiStruct->p3);
+    p4 = Py_BuildValue("i", dpiStruct->p4);
+    p6 = Py_BuildValue("i", dpiStruct->p6);
+    p7 = Py_BuildValue("i", dpiStruct->p7);
+    p8 = Py_BuildValue("i", dpiStruct->p8);
+    p9 = Py_BuildValue("i", dpiStruct->p9);
 
     pBlockMethod = Py_BuildValue("s", "sobel");
     assert(pBlockMethod != NULL);

@@ -8,15 +8,16 @@ module top;
   
   initial begin
     clk = 0;
-    rst = 1;
-    #22 rst = 0;
+    rst = 0;
+    #22 rst = 1;
+    #1 rst = 0;
     
   end
   
   always #5 clk = !clk;
     
-  input_if in_if(clk, reset);
-  output_if out_if(clk, reset);
+  input_if in_if(clk, rst);
+  output_if out_if(clk, rst);
   
   stochWrapper stoch(.pixel_1_bin(in_if.pixel_1_bin),
   .pixel_2_bin(in_if.pixel_2_bin),
